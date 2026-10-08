@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'unsafe-inline'; connect-src https://*.facebook.com https://*.facebook.net; frame-src https://*.facebook.com; img-src 'self' data: https://*.facebook.com https://*.facebook.net; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Nuvrano · WhatsApp 共存授权准备页</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f6f5; color: #16362b; font: 16px/1.7 system-ui, "Microsoft YaHei", sans-serif; }
+    main { max-width: 780px; margin: 52px auto; padding: 0 22px; }
+    .brand { font-size: 13px; letter-spacing: .12em; color: #557669; }
+    h1 { font-size: clamp(25px, 5vw, 35px); line-height: 1.3; margin: 12px 0; }
+    .card { background: white; border: 1px solid #dae5df; border-radius: 18px; padding: 24px; margin: 22px 0; }
+    .status { background: #fff3d8; border-left: 4px solid #bb861b; padding: 14px 18px; }
+    dt { color: #557669; font-size: 14px; } dd { margin: 0 0 12px; overflow-wrap: anywhere; }
+    code { font: 15px ui-monospace, Consolas, monospace; }
+    label { display: flex; gap: 10px; align-items: flex-start; margin: 20px 0; }
+    input { margin-top: 7px; }
+    button { border: 0; border-radius: 10px; padding: 14px 22px; background: #087a55; color: white; font: inherit; cursor: pointer; }
+    button:disabled { background: #cbd6d0; color: #486055; cursor: not-allowed; }
+    a { color: #087a55; text-underline-offset: 3px; }
+    .small { color: #557669; font-size: 14px; }
+    li { margin: 8px 0; }
+  </style>
+  <script src="launcher.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="brand">NUVRANO · WHATSAPP</div>
+    <h1>连接现有 WhatsApp Business App</h1>
+    <p>这是为 Nuvrano 准备的自建启动页。登录与授权在 Meta 官方窗口中完成。</p>
+    <p id="status" class="status" role="status" aria-live="polite">授权准备稿：尚未核验 Meta 权限和共存资格，授权暂未启用。</p>
+    <section class="card" aria-label="授权配置">
+      <dl>
+        <dt>Meta 应用</dt><dd>Nuvrano WA AI · <code>1752615679316999</code></dd>
+        <dt>新建的嵌入式注册配置编号</dt><dd><code>1087939604209242</code></dd>
+      </dl>
+      <p class="small">这个编号是 Config ID。手机要求的配对码，需要在 Meta 连接流程中获取。</p>
+      <label><input id="ready" type="checkbox" disabled><span>我已核对 Meta 所需权限、允许的网页域名及服务端回调，确认可以开始授权。</span></label>
+      <button id="launch" type="button" disabled>打开 Meta 共存授权窗口</button>
+      <p class="small">本页当前只包含启动部分。服务端凭证交换和 Webhook 接入仍需准备，不代表 API 已接通。</p>
+    </section>
+    <section class="card">
+      <h2>下一步</h2>
+      <ol>
+        <li>先解决 Meta 后台已提示的 <code>public_profile</code> 高级访问权限问题，并核对 WhatsApp 嵌入式注册所需条件。</li>
+        <li>准备 HTTPS 地址、Meta 允许的网页域名，以及服务端授权回调，再启用启动按钮。</li>
+        <li>在 Meta 窗口中确认出现“连接现有 WhatsApp Business App”，再按提示在手机上配对。</li>
+      </ol>
+      <p>如果出现要求注销现有手机账号或迁移号码的流程，先关闭窗口。</p>
+    </section>
+    <p class="small">参考：<a href="https://www.postman.com/meta/whatsapp-business-platform/documentation/du6gzjv/embedded-signup" target="_blank" rel="noopener noreferrer">Meta 发布的 Embedded Signup 说明</a> · <a href="https://faq.whatsapp.com/8122483904494954" target="_blank" rel="noopener noreferrer">WhatsApp 官方共存说明</a></p>
+  </main>
+</body>
+</html>
